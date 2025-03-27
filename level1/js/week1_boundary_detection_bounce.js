@@ -43,13 +43,11 @@ function animate()
 			{
 				ball.vy = -ball.vy;	
 				ball.width -= 25;
-				ball.y -= 25;
 			}
 	if(ball.y < 0 + ball.height/2)
 				{
 					ball.vy = -ball.vy;	
 					ball.width += 25;
-					ball.y += 25;
 				}
 	//---------------------------------------------------
 	
