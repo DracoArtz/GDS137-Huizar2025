@@ -18,7 +18,12 @@ function animate()
 {
 	context.clearRect(0,0,canvas.width, canvas.height);	
 
-	//player.x += 2;
+	if (w){
+        player.y += -2;
+    }
+    if (s){
+        player.y += 2;
+    }
 
 	player.drawRect();
 }

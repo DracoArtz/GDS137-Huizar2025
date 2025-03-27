@@ -26,17 +26,17 @@ function GameObject()
 		context.restore();
 		
 	}	
-	// this.drawCircle = function()
-	// {
-	// 	context.save();
-	// 		context.fillStyle = this.color;
-	// 		context.translate(this.x, this.y);
-	// 		context.beginPath();
-	// 		context.arc(0, 0, this.width/2, 0, 360 * Math.PI);
-	// 		context.fill();
-	// 	context.restore();
+	this.drawCircle = function()
+	{
+		context.save();
+			context.fillStyle = this.color;
+			context.translate(this.x, this.y);
+			context.beginPath();
+			context.arc(0, 0, this.width/2, 0, 360 * Math.PI);
+			context.fill();
+		context.restore();
 		
-	// }	
+	}	
 	
 	//This changes the player's position
 	this.move = function()
