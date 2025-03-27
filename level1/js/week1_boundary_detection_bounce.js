@@ -30,18 +30,26 @@ function animate()
 	if(ball.x > canvas.width - ball.width/2)
 	{
 		ball.vx = -ball.vx;	
+		ball.width -= 25;
+		ball.x -= 25;
 	}
 	if(ball.x < 0 + ball.width/2)
 		{
 			ball.vx = -ball.vx;	
+			ball.width += 25;
+			ball.x += 25;
 		}
 	if(ball.y > canvas.height - ball.height/2)
 			{
 				ball.vy = -ball.vy;	
+				ball.width -= 25;
+				ball.y -= 25;
 			}
 	if(ball.y < 0 + ball.height/2)
 				{
 					ball.vy = -ball.vy;	
+					ball.width += 25;
+					ball.y += 25;
 				}
 	//---------------------------------------------------
 	
