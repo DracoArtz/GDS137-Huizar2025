@@ -25,7 +25,6 @@ function Ball()
 			//context.fillRect((-this.width/2), (-this.height/2), this.width, this.height);
 			context.beginPath();
 			context.arc(100, 75, 50, 0, 360 * Math.PI);
-			context.fillStyle = "blue";
 			context.fill();
 		context.restore();
 		
