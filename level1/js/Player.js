@@ -24,7 +24,7 @@ function Ball()
 			context.translate(this.x, this.y);
 			//context.fillRect((-this.width/2), (-this.height/2), this.width, this.height);
 			context.beginPath();
-			context.arc(100, 75, 50, 0, 360 * Math.PI);
+			context.arc(0, 0, this.width/2, 0, 360 * Math.PI);
 			context.fill();
 		context.restore();
 		
