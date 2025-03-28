@@ -16,14 +16,22 @@ timer = setInterval(animate, interval);
 
 function animate()
 {
-	context.clearRect(0,0,canvas.width, canvas.height);	
-
-	if (w){
-        player.y += -2;
+	context.clearRect(0,0,canvas.width, canvas.height);
+    if (w){
+        player.y += -5;
     }
     if (s){
-        player.y += 2;
+        player.y += 5;
     }
+    if(player.y > canvas.height - player.height/2)
+        {
+            player.y = canvas.height - player.height/2;	
+        }
+    if(player.y < 0 + player.height/2)
+            {
+                player.y = 0 + player.height/2;	
+            }
+	
 
 	player.drawRect();
 }
