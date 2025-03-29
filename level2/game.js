@@ -3,6 +3,7 @@ var context;
 var timer;
 var interval = 1000/60;
 var player;
+var ball;
 
 canvas = document.getElementById("canvas");
 context = canvas.getContext("2d");
@@ -12,6 +13,13 @@ player.x = 30;
 player.width = 15;
 player.height = 60;
 player.color = "purple";
+
+ball = new GameObject();
+ball.width = 20;
+ball.height = 20;
+ball.vx = 5;
+ball.vy = 5;
+
 timer = setInterval(animate, interval);
 
 function animate()
@@ -32,6 +40,25 @@ function animate()
                 player.y = 0 + player.height/2;	
             }
 	
+ball.move();
+
+	if(ball.x > canvas.width - ball.width/2)
+	{
+		ball.vx = -ball.vx;	
+	}
+	if(ball.x < 0 + ball.width/2)
+		{
+			ball.vx = -ball.vx;	
+		}
+	if(ball.y > canvas.height - ball.height/2)
+			{
+				ball.vy = -ball.vy;	
+			}
+	if(ball.y < 0 + ball.height/2)
+				{
+					ball.vy = -ball.vy;	
+				}
 
 	player.drawRect();
+    ball.drawCircle();
 }
