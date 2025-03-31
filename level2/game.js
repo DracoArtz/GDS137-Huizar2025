@@ -63,7 +63,10 @@ ball.move();
 			ball.vx = 5;
 			console.log("colliding");
 		}
-
+		if(ball.x < -20){
+			ball.x = canvas.width/2;
+			ball.y = canvas.height/2;
+		}
 	// if (player.x + player.width - ball.x >= 0 && ball.y - player.y == 0){
 	// 	ball.vx = -ball.vx;
 	// }
