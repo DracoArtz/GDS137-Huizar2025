@@ -9,16 +9,16 @@ canvas = document.getElementById("canvas");
 context = canvas.getContext("2d");
 
 player = new GameObject();
-player.x = 5;
+player.x = 30;
 player.width = 15;
-player.height = 60;
+player.height = 90;
 player.color = "purple";
 
 ball = new GameObject();
 ball.width = 20;
 ball.height = 20;
-ball.vx = 5;
-ball.vy = 5;
+ball.vx = -2;
+ball.vy = 0;
 
 timer = setInterval(animate, interval);
 
@@ -60,16 +60,24 @@ ball.move();
 				}
 
 		if(ball.collision(player)){
-			ball.vx = 5;
-			console.log("colliding");
+			ball.vx = -ball.vx;
+			//bottom third
+			if(ball.y > player.y + player.height/6){
+				ball.vx += 2;
+				ball.vy += 2;
+			}
+			//top third
+			else if(ball.y < player.y - player.height/6){
+				ball.vx += 2;
+				ball.vy -= 2;
+			}
 		}
 		if(ball.x < -20){
+
 			ball.x = canvas.width/2;
 			ball.y = canvas.height/2;
+			
 		}
-	// if (player.x + player.width - ball.x >= 0 && ball.y - player.y == 0){
-	// 	ball.vx = -ball.vx;
-	// }
 	player.drawRect();
     ball.drawCircle();
 }
