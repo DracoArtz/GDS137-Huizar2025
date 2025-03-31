@@ -9,7 +9,7 @@ canvas = document.getElementById("canvas");
 context = canvas.getContext("2d");
 
 player = new GameObject();
-player.x = 30;
+player.x = 5;
 player.width = 15;
 player.height = 60;
 player.color = "purple";
@@ -46,10 +46,10 @@ ball.move();
 	{
 		ball.vx = -ball.vx;	
 	}
-	if(ball.x < 0 + ball.width/2)
-		{
-			ball.vx = -ball.vx;	
-		}
+	// if(ball.x < 0 + ball.width/2)
+	// 	{
+	// 		ball.vx = -ball.vx;	
+	// 	}
 	if(ball.y > canvas.height - ball.height/2)
 			{
 				ball.vy = -ball.vy;	
@@ -59,6 +59,14 @@ ball.move();
 					ball.vy = -ball.vy;	
 				}
 
+		if(ball.collision(player)){
+			ball.vx = 5;
+			console.log("colliding");
+		}
+
+	// if (player.x + player.width - ball.x >= 0 && ball.y - player.y == 0){
+	// 	ball.vx = -ball.vx;
+	// }
 	player.drawRect();
     ball.drawCircle();
 }
