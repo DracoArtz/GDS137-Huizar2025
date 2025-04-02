@@ -17,7 +17,7 @@ player.color = "purple";
 ball = new GameObject();
 ball.width = 20;
 ball.height = 20;
-ball.vx = -2;
+ball.vx = -5;
 ball.vy = 0;
 
 timer = setInterval(animate, interval);
@@ -60,16 +60,16 @@ ball.move();
 				}
 
 		if(ball.collision(player)){
+			ball.x = player.x + player.width/2 + ball.width/2;
 			ball.vx = -ball.vx;
+			
 			//bottom third
 			if(ball.y > player.y + player.height/6){
-				ball.vx += 2;
-				ball.vy += 2;
+				ball.vy = 5;
 			}
 			//top third
 			else if(ball.y < player.y - player.height/6){
-				ball.vx += 2;
-				ball.vy -= 2;
+				ball.vy = -5;
 			}
 		}
 		if(ball.x < -20){
