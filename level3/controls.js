@@ -8,6 +8,8 @@ document.addEventListener("keyup", release);
 
 function press(e)
 {
+	console.log("Pressed" + e.keyCode);
+
 	if(e.keyCode == 87)
 	{
 		w = true;
@@ -16,12 +18,13 @@ function press(e)
 	{
 		s = true;
 	}
-	if(e.keycode == 38){
+	if(e.keyCode == 38){
 		up = true;
 	}
-	if(e.keycode == 40){
+	if(e.keyCode == 40){
 		down = true;
 	}
+	
 }
 
 function release(e)
@@ -34,10 +37,10 @@ function release(e)
 	{
 		s = false;
 	}
-	if(e.keycode == 38){
+	if(e.keyCode == 38){
 		up = false;
 	}
-	if(e.keycode == 40){
+	if(e.keyCode == 40){
 		down = false;
 	}
 }

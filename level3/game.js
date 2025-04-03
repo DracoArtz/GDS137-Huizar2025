@@ -48,10 +48,10 @@ function animate()
                 player.y = 0 + player.height/2;	
             }
 	//player 2
-	if (w){
+	if (up){
         player2.y += -5;
     }
-    if (s){
+    if (down){
         player2.y += 5;
     }
     if(player2.y > canvas.height - player2.height/2)
@@ -64,11 +64,6 @@ function animate()
             }
 	
 ball.move();
-
-	if(ball.x > canvas.width - ball.width/2)
-	{
-		ball.vx = -ball.vx;	
-	}
 
 	if(ball.y > canvas.height - ball.height/2)
 			{
@@ -93,11 +88,28 @@ ball.move();
 			}
 		}
 		
-		if(ball.x < -20){
+		if(ball.collision(player2)){
+			ball.x = player2.x - player2.width/2 - ball.width/2;
+			ball.vx = -ball.vx;
+			
+			//bottom third
+			if(ball.y > player2.y + player2.height/6){
+				ball.vy = 5;
+			}
+			//top third
+			else if(ball.y < player2.y - player2.height/6){
+				ball.vy = -5;
+			}
+		}
 
+		if(ball.x < -20){
 			ball.x = canvas.width/2;
 			ball.y = canvas.height/2;
-			
+		}
+		
+		if(ball.x > 1020){
+			ball.x = canvas.width/2;
+			ball.y = canvas.height/2;
 		}
 	player.drawRect();
 	player2.drawRect();
