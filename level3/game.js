@@ -70,16 +70,18 @@ ball.move();
 	if(ball.y > canvas.height - ball.height/2)
 			{
 				ball.vy = -ball.vy;	
+				ball.color = "red";
 			}
 	if(ball.y < 0 + ball.height/2)
 				{
-					ball.vy = -ball.vy;	
+					ball.vy = -ball.vy;
+					ball.color = "red";	
 				}
 
 		if(ball.collision(player)){
 			ball.x = player.x + player.width/2 + ball.width/2;
 			ball.vx = -ball.vx;
-			
+			ball.color = "purple";
 			//bottom third
 			if(ball.y > player.y + player.height/6){
 				ball.vy = 5;
@@ -93,7 +95,7 @@ ball.move();
 		if(ball.collision(player2)){
 			ball.x = player2.x - player2.width/2 - ball.width/2;
 			ball.vx = -ball.vx;
-			
+			ball.color = "orange";
 			//bottom third
 			if(ball.y > player2.y + player2.height/6){
 				ball.vy = 5;
