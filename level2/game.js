@@ -43,18 +43,17 @@ function animate()
 ball.move();
 
 	if(ball.x > canvas.width - ball.width/2)
-	{
-		ball.vx = -ball.vx;	
-	}
-
+			{
+				ball.vx = -ball.vx;	
+			}
 	if(ball.y > canvas.height - ball.height/2)
 			{
 				ball.vy = -ball.vy;	
 			}
 	if(ball.y < 0 + ball.height/2)
-				{
-					ball.vy = -ball.vy;	
-				}
+			{
+				ball.vy = -ball.vy;	
+			}
 
 		if(ball.collision(player)){
 			ball.x = player.x + player.width/2 + ball.width/2;
