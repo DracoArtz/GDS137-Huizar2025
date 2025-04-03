@@ -118,10 +118,21 @@ ball.move();
 			wins++;
 		}
 
-		context.font = "20px Georgia";
-		context.fillText("Player 1 | Player 2", 400, 30);
-		context.fillText(`${wins} - ${wins2}`, 458, 60);
+		
+		
+		context.save();
+		context.strokeStyle = "yellow";
+		context.beginPath();
+		context.moveTo(canvas.width/2, 0);
+		context.lineTo(canvas.width/2, canvas.height);
+		context.closePath();
+		context.lineWidth = 5; 
+		context.stroke();
+		context.restore();
 
+		context.font = "20px Georgia";
+		context.fillText("Player 1 | Player 2", 434, 30);
+		context.fillText(`${wins} - ${wins2}`, 492, 60);
 
 	player.drawRect();
 	player2.drawRect();
