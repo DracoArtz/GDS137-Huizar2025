@@ -10,6 +10,7 @@ var wins2 = 0;
 
 canvas = document.getElementById("canvas");
 context = canvas.getContext("2d");
+var img = document.getElementById("ScaryGuy");
 
 player = new GameObject();
 player.x = 30;
@@ -24,8 +25,8 @@ player2.height = 90;
 player2.color = "orange";
 
 ball = new GameObject();
-ball.width = 20;
-ball.height = 20;
+ball.width = 40;
+ball.height = 40;
 ball.vx = -5;
 ball.vy = 0;
 
@@ -119,7 +120,6 @@ ball.move();
 		}
 
 		
-		
 		context.save();
 		context.strokeStyle = "yellow";
 		context.beginPath();
@@ -136,5 +136,6 @@ ball.move();
 
 	player.drawRect();
 	player2.drawRect();
-    ball.drawCircle();
+    //ball.drawCircle();
+	context.drawImage(img, ball.x - ball.width/2, ball.y - ball.height/2, ball.width, ball.height);
 }
