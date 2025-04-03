@@ -5,6 +5,8 @@ var interval = 1000/60;
 var player;
 var player2;
 var ball;
+var wins = 0;
+var wins2 = 0;
 
 canvas = document.getElementById("canvas");
 context = canvas.getContext("2d");
@@ -105,12 +107,20 @@ ball.move();
 		if(ball.x < -20){
 			ball.x = canvas.width/2;
 			ball.y = canvas.height/2;
+			wins2++;
 		}
 		
 		if(ball.x > 1020){
 			ball.x = canvas.width/2;
 			ball.y = canvas.height/2;
+			wins++;
 		}
+
+		context.font = "20px Georgia";
+		context.fillText("Player 1 | Player 2", 400, 30);
+		context.fillText(`${wins} - ${wins2}`, 458, 60);
+
+
 	player.drawRect();
 	player2.drawRect();
     ball.drawCircle();
