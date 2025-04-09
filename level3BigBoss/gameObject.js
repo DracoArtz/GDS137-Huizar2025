@@ -13,6 +13,9 @@ function GameObject()
 	this.vx = 0;
 	this.vy = 0;
 	
+	this.force = 0;
+	this.friction = 0;
+
 	//player's color
 	this.color = "#ff0000";
 	
