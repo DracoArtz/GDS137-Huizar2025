@@ -59,10 +59,12 @@ function animate()
 	if(ball.x > canvas.width - ball.width/2)
 		{
 			ball.vx = -ball.vx;	
+			ball.x = canvas.width - ball.height/2;
 		}
 	if(ball.x < 0 + ball.width/2)
 		{
 			ball.vx = -ball.vx;	
+			ball.x = 0 + ball.width/2;
 		}
 	if(ball.y > canvas.height - ball.height/2)
 		{
@@ -73,6 +75,7 @@ function animate()
 	if(ball.y < 0 + ball.height/2)
 		{
 			ball.vy = -ball.vy;	
+			ball.y = 0 + ball.height/2;
 		}
 
 		ball.vy += gravity;
@@ -82,26 +85,24 @@ function animate()
 			// ball.vy = -ball.vy;
 			score++;
 			ball.vy = -35;
-			//middle
-			if(ball.x < player.x - player.width/6 && ball.x > player.x + player.width/6){}
 			//right most sixth
-			else if(ball.x > player.x + player.width/3){
+			if(ball.x > player.x + player.width/3){
 				ball.vx = ball.force*5;
 			}
 			//2nd right most sixth
-			else if(ball.x > player.x + player.height/6){
+			else if(ball.x > player.x + player.width/6){
 				ball.vx = ball.force;
 			}
 			//left most sixth
-			else if(ball.x < player.x - player.height/3){
+			else if(ball.x < player.x - player.width/3){
 				ball.vx = -ball.force*5;
 			}
 			//2nd left most sixth
-			else if(ball.x < player.x - player.height/6){
+			else if(ball.x < player.x - player.width/6){
 				ball.vx = -ball.force;
 			}
 		}
-		context.font = "16px Ariel";
+		context.font = "16px Arial";
 		context.fillText(`score: ${score}`, 80, 25);
 
 		
