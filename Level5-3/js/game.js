@@ -37,12 +37,6 @@ var player;
 	interval = 1000/60;
 	timer = setInterval(animate, interval);
 
-	
-
-function rand(low, high)
-{
-		return Math.random() * (high - low) + low;
-}
 	for(let i = 0; i < amount; i++)
 		{
 			particles[i] = new GameObject();

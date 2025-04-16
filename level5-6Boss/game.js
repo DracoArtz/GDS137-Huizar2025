@@ -19,10 +19,12 @@ player.height = 40;
 player.friction = 0.725;
 
 var plots = [];
-var plotAmt = 3
+var plotAmt = 3;
 
 var seeds = [];
-var seedAmt = 9
+var seedAmt = 27;
+
+plantCount = 0;
 
 iSlot = new GameObject();
 iSlot.x = 0 + 50;
@@ -40,8 +42,7 @@ iSlot1.color = "white";
 
 timer = setInterval(animate, interval);
 
-//plots
-
+//making plots
 for(let p = 0; p < plotAmt; p++)
 {
 	plots[p] = new GameObject();
@@ -52,18 +53,62 @@ for(let p = 0; p < plotAmt; p++)
 	plots[p].color = "#5b3010";
 
 }
+//function for if the mouse is over a thing
+function mouseOver(obj)
+	{
+		 if(mouse.x < obj.x + obj.width/2 &&
+		 mouse.x > obj.x - obj.width/2 &&
+		 mouse.y < obj.y + obj.height/2 &&
+		 mouse.y > obj.y - obj.height/2)
+		 {
+			return true;
+		 }
+		 return false; 
+	}
+//original seed place
+	for(let s = 0; s < seedAmt; s++)
+		{
+			seeds[s] = new GameObject();
+			seeds[s].width = 10;
+			seeds[s].height = 10;
+			seeds[s].color = "yellow";
+			seeds[s].x = 0;
+			seeds[s].y = 1000000;
+
+		}
+//planting seeds function
+function plant(obj)
+	{
+		for(s = plantCount; s < seedAmt; s++){
+		seeds[s].x = (Math.random() * obj.width) + obj.x - obj.width/2;
+		seeds[s].y = (Math.random() * obj.height) + obj.y - obj.height/2;
+		obj.seeded = true;
+		if(s > plantCount + 8)
+			{
+				seeds[s].x = 0;
+				seeds[s].y = 1000000;
+			}
+		}
+		
+		plantCount += 9;
+	}
 
 function animate()
 {
 	context.clearRect(0,0,canvas.width, canvas.height);
+//rendering array objects
 	for(let r = 0; r < plotAmt; r++)
 		{
 			plots[r].drawRect();
-
 		}
 		plots[1].x = 200;
 		plots[2].x = 300;
 
+		for(s = 0; s < seedAmt; s++)
+		{
+		seeds[s].drawRect();
+		}
+//inventory
 	if(keys["1"])
 	{
 		iSlot.select = true;
@@ -78,8 +123,20 @@ function animate()
 			iSlot1.color = "yellow";
 			iSlot.color = "white";
 		}
-		
-
+//planting in the plots
+	if(mouse.pressed && mouseOver(plots[0]) && iSlot.select && plots[0].seeded == false)
+		{
+			plant(plots[0]);
+		}
+	if(mouse.pressed && mouseOver(plots[1]) && iSlot.select && plots[1].seeded == false)
+		{
+			plant(plots[1]);
+		}
+	if(mouse.pressed && mouseOver(plots[2]) && iSlot.select && plots[2].seeded == false)
+		{
+			plant(plots[2]);
+		}
+//all the rendering
 	context.font = "16px Arial";
 	iSlot.drawRect().strokeRect();
 	context.fillText(`seeds`, iSlot.x - 20, iSlot.y);

@@ -22,7 +22,7 @@ function GameObject()
 
 	//if something is selected
 	this.select = false;
-	
+	this.seeded = false;
 	//This draws the player to the screen
 	this.drawRect = function()
 	{
@@ -91,6 +91,6 @@ function GameObject()
 		}
 		return false;
 	}
-	
-
 }
+
+
