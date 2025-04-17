@@ -96,9 +96,9 @@ function animate()
               }
         }  
    
-    if(player.y > canvas.height - player.height/2)
+    if(player.y > canvas.height - player.height/2 - 25)
         {
-            player.y = canvas.height - player.height/2;	
+            player.y = canvas.height - player.height/2 - 25;	
         }
     if(player.x > canvas.width - player.height/2)
         {
