@@ -11,7 +11,7 @@ var player = new GameObject({width:50, height:50, angle:0, x:canvas.width/2, y:c
 //This is used to move the level elements
 var level = new Level();
 //This generates a tile based level.
-	level.generate(level.l2, 150,150);		
+	level.generate(level.l1, 150,150);		
 
 var fx = .85;
 var fy = .85;
@@ -81,6 +81,7 @@ states["play"] = function()
 			player.vy = 0;
 			player.y--;
 			offset.y--;
+			level.generate(level.l2, 150,150);
 		}
 		
 	}
