@@ -65,22 +65,7 @@ function mouseOver(obj)
 	seedAmt = 9;
 	//original seed place
 
-//planting seeds function
-// function plant(obj)
-// 	{
-// 		for(s = plantCount; s < seedAmt; s++){
-// 		seeds[s].x = (Math.random() * obj.width) + obj.x - obj.width/2;
-// 		seeds[s].y = (Math.random() * obj.height) + obj.y - obj.height/2;
-// 		obj.seeded = true;
-// 		if(s > plantCount + 8)
-// 			{
-// 				seeds[s].x = 0;
-// 				seeds[s].y = 1000000;
-// 			}
-// 		}
-		
-// 		plantCount += 9;
-// 	}
+
 for(p = 0; p < plotAmt; p++)
 	{
 		for(s = 0; s < seedAmt; s++ )
@@ -142,11 +127,7 @@ for(p = 0; p < plotAmt; p++)
 		for(s = 0; s < seedAmt; s++)
 				{
 					
-					if(plots[p].frames < 300 && plots[p].seeded)
-					{
-					plots[p].seeds[s].height += .25;
-					plots[p].seeds[s].x - plots[p].seeds[s].height;
-					}
+					if(plots[p].frames < 300 && plots[p].seeded)plots[p].seeds[s].height += .25;
 				}
 	}
 	
