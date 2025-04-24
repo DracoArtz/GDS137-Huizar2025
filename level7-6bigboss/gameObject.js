@@ -26,6 +26,7 @@ function GameObject()
 
 	seedAmt = 9;
 	this.seeds = [];
+	this.seedNum = 0;
 
 	this.frames = 0;
 	//This draws the player to the screen
@@ -94,15 +95,6 @@ function GameObject()
 		return this.y + this.height/2;
 	}
 
-	this.sTop = function() 
-	{
-		return this.y - this.height;
-	}
-	this.sBottom = function() 
-	{
-		return this.y;
-	}
-
 	this.collision = function(obj)
 	{
 		if(this.left() < obj.right() && 
@@ -113,6 +105,15 @@ function GameObject()
 			return true
 		}
 		return false;
+	}
+
+	this.sTop = function() 
+	{
+		return this.y - this.height;
+	}
+	this.sBottom = function() 
+	{
+		return this.y;
 	}
 
 	this.seedCollision = function(obj)
@@ -126,6 +127,7 @@ function GameObject()
 		}
 		return false;
 	}
+	
 }
 
 

@@ -96,7 +96,8 @@ for(p = 0; p < plotAmt; p++)
 				obj.seeds[s].x = (Math.random() * obj.width) + obj.x - obj.width/2;
 				obj.seeds[s].y = (Math.random() * obj.height) + obj.y - obj.height/2;
 				obj.seeded = true;
-
+				obj.seedNum = 9;
+				obj.frames = 0;
 			}
 	}
 
@@ -127,11 +128,11 @@ function animate()
 		}
 //planting in the plots
 for(p = 0; p < plotAmt; p++)
-	{
+	{	
+		//if(plots[p].frames == 0)plots[p].seeded = false;
 		if(mouse.pressed && mouseOver(plots[p]) && iSlot.select && plots[p].seeded == false)
 		{
 			plant(plots[p]);
-			plots[p].frames = 0;
 		}
 		if(plots[p].seeded)plots[p].frames ++;
 
@@ -139,16 +140,16 @@ for(p = 0; p < plotAmt; p++)
 				{
 					if(plots[p].frames < 300 && plots[p].seeded) plots[p].seeds[s].height += .25;
 
-					if(plots[p].seeds[s].collision(scythe) && plots[p].frames > 300)
+					if(plots[p].seeds[s].seedCollision(scythe) && plots[p].frames > 300)
 						{
 							wheat++;
-							plots[p].seeds[s].width = 10;
 							plots[p].seeds[s].height = 10;
-							plots[p].seeds[s].x = 0;
 							plots[p].seeds[s].y = 1000000;
-							if(!plots[p].seeds[s].seedCollision(plots[p]))plots[p].seeded = false;
+							plots[p].seedNum--;
+							
 						}
 				}
+				if(plots[p].seedNum == 0)plots[p].seeded = false;
 	}
 	//scythe clicking and moving
 	if(mouse.pressed && mouseOver(scythe) && iSlot1.select)
