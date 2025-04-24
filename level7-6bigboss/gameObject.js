@@ -93,13 +93,34 @@ function GameObject()
 	{
 		return this.y + this.height/2;
 	}
-	
+
+	this.sTop = function() 
+	{
+		return this.y - this.height;
+	}
+	this.sBottom = function() 
+	{
+		return this.y;
+	}
+
 	this.collision = function(obj)
 	{
 		if(this.left() < obj.right() && 
 		   this.right() > obj.left() &&
 		   this.top() < obj.bottom() &&
 		   this.bottom() > obj.top())
+		{
+			return true
+		}
+		return false;
+	}
+
+	this.seedCollision = function(obj)
+	{
+		if(this.left() < obj.right() && 
+		   this.right() > obj.left() &&
+		   this.sTop() < obj.bottom() &&
+		   this.sBottom() > obj.top())
 		{
 			return true
 		}

@@ -27,6 +27,8 @@ scythe.height = 40;
 scythe.color = 'blue';
 scytheHold = false;
 
+var wheat = 0;
+
 var plots = [];
 var plotAmt = 3;
 
@@ -135,14 +137,22 @@ for(p = 0; p < plotAmt; p++)
 
 		for(s = 0; s < seedAmt; s++)
 				{
-					
-					if(plots[p].frames < 300 && plots[p].seeded)plots[p].seeds[s].height += .25;
+					if(plots[p].frames < 300 && plots[p].seeded) plots[p].seeds[s].height += .25;
+
+					if(plots[p].seeds[s].collision(scythe) && plots[p].frames > 300)
+						{
+							wheat++;
+							plots[p].seeds[s].width = 10;
+							plots[p].seeds[s].height = 10;
+							plots[p].seeds[s].x = 0;
+							plots[p].seeds[s].y = 1000000;
+							if(!plots[p].seeds[s].seedCollision(plots[p]))plots[p].seeded = false;
+						}
 				}
 	}
 	//scythe clicking and moving
 	if(mouse.pressed && mouseOver(scythe) && iSlot1.select)
 		{
-			console.log('holding');
 			scytheHold = true;
 		}
 	else if(!mouse.pressed || !iSlot1.select)
@@ -156,7 +166,6 @@ for(p = 0; p < plotAmt; p++)
 		scythe.x = mouse.x;
 		scythe.y = mouse.y;
 	}
-	
 
 //all the rendering
 	context.font = "16px Arial";
@@ -177,5 +186,6 @@ for(p = 0; p < plotAmt; p++)
 		}
 	scythe.drawRect();
 	context.fillText(`Scythe`, iSlot1.x-iSlot1.width/2, iSlot1.y);
+	context.fillText(`Wheat: ${wheat}`, 10, 30);
 	//context.drawImage(img, ball.x - ball.width/2, ball.y - ball.height/2, ball.width, ball.height);
 }

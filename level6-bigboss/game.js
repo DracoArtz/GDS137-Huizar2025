@@ -7,6 +7,7 @@ var score = 0;
 var danger = [];
 var safe = [];
 var frames = 0;
+var colorTimer;
 
 canvas = document.getElementById("canvas");
 context = canvas.getContext("2d");
@@ -69,7 +70,8 @@ function animate()
                 score = 0;
                 for(b = 0; b < 5; b++) danger[b].y = Math.random() * 200 - 300;
                 for(s = 0; s < 5; s++)safe[s].y = Math.random() * 200 - 300;
-                setTimeout(color, 500); 
+                clearTimeout(colorTimer);
+                colorTimer = setTimeout(color, 500); 
             }
 
         }  
@@ -84,9 +86,10 @@ function animate()
             if(safe[s].collision(player))
               {
                 safe[s].y = Math.random() * 200 - 300;
-                  player.color = 'green';
-                  score ++;
-                setTimeout(color, 500);
+                player.color = 'green';
+                score ++;
+                clearTimeout(colorTimer);
+                colorTimer = setTimeout(color, 500); 
               }
 
         }  
