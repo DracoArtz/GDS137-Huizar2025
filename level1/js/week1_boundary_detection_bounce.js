@@ -14,7 +14,7 @@ var ball;
 	ball.vx = 2;
 	ball.vy = 2;
 	//----------------------------------------------------
-	
+	 
 	timer = setInterval(animate, interval);
 
 
