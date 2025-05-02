@@ -216,7 +216,7 @@ for(p = 0; p < plotAmt; p++)
 				{
 					if(plots[p].frames < 600 && plots[p].seededCorn) plots[p].cornStalk[c].height += .1;
 
-					if(plots[p].cornStalk[c].seedCollision(scythe) && plots[p].frames > 300)
+					if(plots[p].cornStalk[c].seedCollision(scythe) && plots[p].frames > 600)
 						{
 							cornAmt += 3;
 							plots[p].cornStalk[c].height = 10;
@@ -299,6 +299,12 @@ for(p = 0; p < plotAmt; p++)
 	context.fillText(`Shop`, sButton.x - sButton.width/4, sButton.y);
 	context.fillText(`Sell All`, sellButton.x - sellButton.width/4, sellButton.y);
 	context.fillText(`Crops`, sellButton.x - sellButton.width/4, sellButton.y + 20);
+
+	if(cAlert)
+		{
+			alert("Carbine Harvester won't be added until version 7.8. You're in version 0.3.")
+			cAlert = false;
+		}
 
 	if (shopOpen == true) shop();
 	//context.drawImage(img, ball.x - ball.width/2, ball.y - ball.height/2, ball.width, ball.height);
