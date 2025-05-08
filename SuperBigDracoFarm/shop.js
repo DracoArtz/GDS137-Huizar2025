@@ -64,6 +64,6 @@ function shop()
     context.fillText(`200 Coins`, cornButton.x - cornButton.width/2 + 5, cornButton.y + 20);
 
     harvester.drawRect().strokeRect();
-    context.fillText(`Buy Carbine Harvester`, harvester.x - harvester.width/2 + 5, harvester.y);
+    context.fillText(`Buy Car-bine Harvester`, harvester.x - harvester.width/2 + 5, harvester.y);
     context.fillText(`9999 Coins`, harvester.x - harvester.width/2 + 5, harvester.y + 20);
 }

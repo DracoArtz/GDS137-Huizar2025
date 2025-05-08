@@ -8,10 +8,21 @@ var scythe;
 var score = 0;
 var gravity = 1;
 
-
 canvas = document.getElementById("canvas");
 context = canvas.getContext("2d");
 //var img = document.getElementById("ScaryGuy");
+var startButton = new GameObject();
+startButton.width = 300;
+startButton.height = 100;
+startButton.x = canvas.width/2;
+startButton.y = canvas.height - 150;
+
+var instructButton = new GameObject();
+instructButton.width = 200;
+instructButton.height = 100;
+instructButton.x = canvas.width/5;
+instructButton.y = canvas.height - 150;
+instructButton.color = "yellow";
 
 var sButton = new GameObject();
 sButton.width = 80;
@@ -75,8 +86,22 @@ iSlot2.width = 50;
 iSlot2.height = 50;
 iSlot2.color = "white";
 
+var backButton = new GameObject();
+backButton.width = 100;
+backButton.height = 100;
+backButton.x = 0 + backButton.width/2;
+backButton.y = canvas.height - backButton.height/2;
+
+
+var state = [];
+var currentState;
+currentState = "menu";
 timer = setInterval(animate, interval);
 
+function animate()
+{
+	state[currentState]();
+}
 //making plots
 for(let p = 0; p < plotAmt; p++)
 {
@@ -148,7 +173,47 @@ for(p = 0; p < plotAmt; p++)
 			}
 	}
 
-function animate()
+state["menu"] = function menu()
+{
+	context.clearRect(0, 0, canvas.width, canvas.height)
+	if(mouseOver(startButton)) startButton.color = 'green';
+	else{startButton.color = 'red'}
+	if(mouseOver(startButton) && mouse.pressed)currentState = "game";
+
+	if(mouseOver(instructButton)) instructButton.color = 'blue';
+	else{instructButton.color = 'yellow'}
+	if(mouseOver(instructButton) && mouse.pressed)currentState = "instructions";
+
+	context.font = "60px Arial";
+	context.fillText(`Big Draco Farm`, canvas.width/3.5, canvas.height/4);
+	context.font = "30px Arial";
+	context.fillText(`By Draco Huizar`, canvas.width/2.5, canvas.height/3);
+	startButton.drawRect().strokeRect();
+	instructButton.drawRect().strokeRect();
+	context.fillText(`Click to Start`, startButton.x - startButton.width/3.5, startButton.y);
+	context.fillText(`Instructions`, instructButton.x - instructButton.width/2.5, instructButton.y);
+}
+
+state["instructions"] = function instructions()
+{
+	backButton.x = 0 + backButton.width/2;
+	backButton.y = canvas.height - backButton.height/2;
+	context.clearRect(0, 0, canvas.width, canvas.height);
+	context.font = "60px Arial";
+	context.fillText(`Instructions`, canvas.width/3.5, canvas.height/4);
+	context.font = "30px Arial";
+	context.fillText(`1. Use the number keys to select inventory slots (1, 2, 3)`, canvas.width/5, canvas.height/3);
+	context.fillText(`2. Click and drag the scythe to harvest crops.`, canvas.width/5, canvas.height/2);
+	backButton.drawRect().strokeRect();
+	context.fillText('Back', backButton.x - 40, backButton.y)
+
+	if(mouseOver(backButton)) backButton.color = "lime";
+	else{backButton.color = "pink"}
+	if(mouseOver(backButton) && mouse.pressed) currentState = "menu";
+
+}
+
+state["game"] = function game()
 {
 	context.clearRect(0,0,canvas.width, canvas.height);
 
@@ -289,9 +354,18 @@ for(p = 0; p < plotAmt; p++)
 				plots[p].cornStalk[c].drawSeed();
 				}
 		}
+		backButton.x = canvas.width - backButton.width/2;
+		backButton.y = canvas.height - 300;
+		backButton.width = 75;
+		backButton.height = 75;
+		if(mouseOver(backButton)) backButton.color = "lime";
+		else{backButton.color = "pink"}
+		if(mouseOver(backButton) && mouse.pressed) currentState = "menu";
+
 	scythe.drawRect();
 	sButton.drawRect().strokeRect();
 	sellButton.drawRect().strokeRect();
+	backButton.drawRect().strokeRect();
 	context.fillText(`Scythe`, iSlot1.x-iSlot1.width/2, iSlot1.y);
 	context.fillText(`Wheat: ${wheat}`, 10, 30);
 	context.fillText(`Corn: ${cornAmt}`, 10, 50);
@@ -299,10 +373,10 @@ for(p = 0; p < plotAmt; p++)
 	context.fillText(`Shop`, sButton.x - sButton.width/4, sButton.y);
 	context.fillText(`Sell All`, sellButton.x - sellButton.width/4, sellButton.y);
 	context.fillText(`Crops`, sellButton.x - sellButton.width/4, sellButton.y + 20);
-
+	context.fillText(`Back`, backButton.x - 20, backButton.y);
 	if(cAlert)
 		{
-			alert("Carbine Harvester won't be added until version 7.8. You're in version 0.3.")
+			alert("Car-bine Harvester won't be added until version 7.8. You're in version 0.3.")
 			cAlert = false;
 		}
 
