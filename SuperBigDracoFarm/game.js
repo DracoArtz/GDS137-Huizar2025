@@ -190,7 +190,7 @@ state["menu"] = function menu()
 	context.fillText(`By Draco Huizar`, canvas.width/2.5, canvas.height/3);
 	startButton.drawRect().strokeRect();
 	instructButton.drawRect().strokeRect();
-	context.fillText(`Click to Start`, startButton.x - startButton.width/3.5, startButton.y);
+	context.fillText(`Click to Play`, startButton.x - startButton.width/3.5, startButton.y);
 	context.fillText(`Instructions`, instructButton.x - instructButton.width/2.5, instructButton.y);
 }
 
