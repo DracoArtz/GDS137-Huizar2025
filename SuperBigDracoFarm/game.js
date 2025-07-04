@@ -63,7 +63,7 @@ var coins = 0;
 var plots = [];
 var plotAmt = 3;
 
-plantCount = 0;
+var plantCount = 0;
 
 iSlot = new GameObject();
 iSlot.x = 0 + 50;
